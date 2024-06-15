@@ -1,4 +1,6 @@
-''' init file for flask app - indicates dir should be treated as package '''
+''' 
+init file for flask app - name indicates dir should be treated as package 
+'''
 
 import os
 from flask import Flask
