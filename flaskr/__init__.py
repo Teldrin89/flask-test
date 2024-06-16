@@ -31,4 +31,9 @@ def create_app(test_config=None):
     def hello():
         return 'Hello Flask!'
 
+    # testing landing page route - '/'
+    @app.route('/')
+    def defult_page():
+        return 'This is a landing page test'
+
     return app
