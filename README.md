@@ -50,3 +50,21 @@ should be treated as package. Inside it holds:
 - also ensures that `app.instance.path` exists
 - and creates a simple route - `@app.route` connecting URL `/hello` with 
   function that returns response
+
+## Database connection
+With this tutorial application the database used will be SQLite and this will
+be accessed by `sqlite3` Python module. To start working with database the 1st
+step is to make a connection. This connection is usually tied to the request
+and closed once the the response is sent.
+In `db.py` there are stored different functions that are used to operate on
+SQLite database. To work with database there is a special object called `g` -
+it stores data that might be accessed by multiple functions during the request.
+Another special object `current_app` is used to point to the Flask app handling
+the request. To connect to database the `sqlite3` has `connect()` function, it
+has been configured with `DATABASE` configuration key (file can be created 
+with database initialization). Another `sqlite3` function called `Row` is used
+to return rows that behave like dicts. Dedicated function is also created to
+close the connection to database (checking initialy if the connection exists).
+The tutorial application database will store users and posts in separate 
+tabels. The creation of DB can be sped up by using SQL schema (stored in 
+`flaskr` directory).
