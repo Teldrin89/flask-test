@@ -24,6 +24,7 @@ def get_db():
 def close_db(e=None):
     '''
     function to close database connection
+    TODO: "e" param could be used in later development
     '''
     db = g.pop('db', None)
 
@@ -46,3 +47,10 @@ def init_db_command():
     '''
     init_db()
     click.echo('Initialized the database')
+
+def init_app(app):
+    '''
+    registering init and close db functions with the app
+    '''
+    app.teardown_appcontext(close_db)
+    app.cli.add_command(init_db_command)
