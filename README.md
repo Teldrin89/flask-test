@@ -67,4 +67,12 @@ to return rows that behave like dicts. Dedicated function is also created to
 close the connection to database (checking initialy if the connection exists).
 The tutorial application database will store users and posts in separate 
 tabels. The creation of DB can be sped up by using SQL schema (stored in 
-`flaskr` directory).
+`flaskr` directory). Required functions have been added to `db.py` - one 
+function to run SQL schema building the database (directly in `flaskr`) and
+the enable running from CLI (Command Line Interface). The initilizing and 
+closing of database functions have to be registered with application. Separate
+function has been created to enable it - `init_app(app)` in `db.py`. The new
+function is then imported to app initialization function and invoked there.
+The new command that can be run to initialize DB: `flask --app flaskr init-db`
+This way a new `instance` directory is created with SQLite DB inside with 2
+tables (posts and users) as per schema.
