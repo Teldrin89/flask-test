@@ -4,6 +4,7 @@ init file for flask app - name indicates dir should be treated as package
 
 import os
 from flask import Flask
+from flaskr import db
 
 def create_app(test_config=None):
     '''create and configure the app'''
@@ -35,5 +36,8 @@ def create_app(test_config=None):
     @app.route('/')
     def defult_page():
         return 'This is a landing page test'
+
+    # importing db initialization function
+    db.init_app(app)
 
     return app
