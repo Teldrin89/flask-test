@@ -15,9 +15,9 @@ def get_db():
             current_app.config['DATABASE'],
             detect_types=sqlite3.PARSE_DECLTYPES
         )
-        g.gb.row_factory = sqlite3.Row
+        g.db.row_factory = sqlite3.Row
 
-        return g.bd
+        return g.db
 
     return None
 
