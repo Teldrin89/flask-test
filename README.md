@@ -85,3 +85,35 @@ functions implemented. The blueprint portion is acting as an intermediate
 step so that rather than registering views and other code directly with an 
 app, they are registered with a blueprint and then blueprint is registered 
 with the application.
+
+```
+ _____________         _____________             __________
+|             |       |             |<--------->|__VIEW 1__|
+|  FLASK APP  |<----->|  BLUEPRINT  |            __________            
+|_____________|       |_____________|<--------->|__VIEW 2__|
+
+```
+
+The blueprint object has to know where it's defined, so `__name__` is passed
+as the second argument. Blueprint is then imported and registered in app initialization script.
+The first view that has been created is a register view. When user visits the
+register URL (`/auth/register`) the view will return a form to fill out. In
+`auth.py` there is only the code for page behavior/actions, specific page 
+layout (`html`) is generated with templates. The function start with `@` 
+decorator that assoicates the URL with function. Register page will have a 
+space for users to put `username` and `password`. Once user submits the form,
+`request.method` will be `POST` and the function will start validating the
+input. A special `request.form` is used to map username and password in form of
+key and value. The function checks if provided input is not empty and if that
+is the case it proceeds to enter the new user into database. Function will try
+to execute `INSERT` on databse by running an SQL query with `?` placeholders 
+and tuple of input values provided to replace them. The database library will 
+take care of escaping the values so that the app is not vulnerable to a SQL 
+injection attack. For the password additional function is executed to hash it
+before storing it in database. Lastly the `db.commit()` function is run to save
+changes. If the `username` already exists an error is thrown and caught in 
+`error` variable. Another function `flash()` is used to catch and store errors
+that can be later shown to users. If user is successfuly registered app 
+redirects using `url.for()` function to the login view based on username.
+Instead of direct link the `redirect()` function is used - this allows for
+easier change of URL without changing all the code that links to it.
