@@ -5,6 +5,7 @@ init file for flask app - name indicates dir should be treated as package
 import os
 from flask import Flask
 from flaskr import db
+from flaskr import auth
 
 def create_app(test_config=None):
     '''create and configure the app'''
@@ -39,5 +40,8 @@ def create_app(test_config=None):
 
     # importing db initialization function
     db.init_app(app)
+
+    # importing blueprint for authentication
+    app.register_blueprint(auth.bp)
 
     return app
