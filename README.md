@@ -76,3 +76,12 @@ function is then imported to app initialization function and invoked there.
 The new command that can be run to initialize DB: `flask --app flaskr init-db`
 This way a new `instance` directory is created with SQLite DB inside with 2
 tables (posts and users) as per schema.
+
+## Blueprints and Views
+Flask app uses patterns to match the incoming request URL to the view that
+should handle it. With `Blueprint` as a way to organize a group of related 
+views and other code the tutorial app will have authentication and post 
+functions implemented. The blueprint portion is acting as an intermediate 
+step so that rather than registering views and other code directly with an 
+app, they are registered with a blueprint and then blueprint is registered 
+with the application.
