@@ -117,3 +117,13 @@ that can be later shown to users. If user is successfuly registered app
 redirects using `url.for()` function to the login view based on username.
 Instead of direct link the `redirect()` function is used - this allows for
 easier change of URL without changing all the code that links to it.
+Next view is a login view - it follows the same pattern as the register one
+with small differences:
+- the user is queried and stored in variable, `fetchone` returns one row from
+the query
+- `check_password_hash` is used to hash the submitted password in the same way
+as stored one and securely compares them
+- new element is used in form of `session` which is a dicttionary storing data
+across requests; upon successfull validation the users `id` is stored in new 
+session - data is stored in a cookie that is sent to browser and later is sent 
+back with subsequent request
