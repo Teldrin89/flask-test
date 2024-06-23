@@ -76,3 +76,21 @@ def logout():
     '''
     session.clear()
     return redirect(url_for('index'))
+
+def login_required(view):
+    '''
+    function that checks if user is logged - allowing only logged in users to
+    created, edit and delete posts
+    the top layer function returns the original view if user is logged in
+    '''
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        '''
+        the function to check if users is logged in, returning redirect to
+        authentication page if not
+        '''
+        if g.user is None:
+            return redirect(url_for('auth.login'))
+
+        return view(**kwargs)
+    return wrapped_view
