@@ -96,6 +96,7 @@ with the application.
 
 The blueprint object has to know where it's defined, so `__name__` is passed
 as the second argument. Blueprint is then imported and registered in app initialization script.
+### Register view
 The first view that has been created is a register view. When user visits the
 register URL (`/auth/register`) the view will return a form to fill out. In
 `auth.py` there is only the code for page behavior/actions, specific page 
@@ -117,6 +118,7 @@ that can be later shown to users. If user is successfuly registered app
 redirects using `url.for()` function to the login view based on username.
 Instead of direct link the `redirect()` function is used - this allows for
 easier change of URL without changing all the code that links to it.
+### Login view
 Next view is a login view - it follows the same pattern as the register one
 with small differences:
 - the user is queried and stored in variable, `fetchone` returns one row from
@@ -127,3 +129,13 @@ as stored one and securely compares them
 across requests; upon successfull validation the users `id` is stored in new 
 session - data is stored in a cookie that is sent to browser and later is sent 
 back with subsequent request
+### Logout view and login required
+The function behind logout logic simply clears user ID from the session and
+redirects to index page. 
+Tutorial app allows for creating, editing and deleting blog posts but these 
+acctions should be allowed only for logged in users. Separate decorator 
+`login_required()` function is created to check for each view if the user is
+logged in. This decorator returns a new functions that wraps the original view 
+it's applied to. The internal function `wrapped_view()` checks if a user is 
+loaded and if yes, original view is called and continues normally. If user is 
+not logged in, this function redirects to login page.
