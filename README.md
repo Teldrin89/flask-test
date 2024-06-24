@@ -139,3 +139,17 @@ logged in. This decorator returns a new functions that wraps the original view
 it's applied to. The internal function `wrapped_view()` checks if a user is 
 loaded and if yes, original view is called and continues normally. If user is 
 not logged in, this function redirects to login page.
+
+## Templates
+Templates are files that contain static and placeholders for dynamic data. A 
+template is rendered using `render_template()` function with specific data to 
+produce final `html` document. Flask uses the Jinja template library to render 
+templates. Jinja looks and behaves mostly like Python - special delimiters are 
+used to distinguish Jinja syntax from static data:
+- anything between `{{` and `}}` is an expression, output will be put in final 
+document
+- anything between `{%` and `%}` denotes a control flow statement like `if`
+### Base layout
+Part of the app layout will be common for all pages. To avoid re-writing the 
+entire HTML structure each template will extend a base one and override 
+specific secions.
