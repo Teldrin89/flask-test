@@ -152,4 +152,15 @@ document
 ### Base layout
 Part of the app layout will be common for all pages. To avoid re-writing the 
 entire HTML structure each template will extend a base one and override 
-specific secions.
+specific secions. To establish the correct links to be displayed the `g.user` 
+value is used. `g` is a namespace object that can store data during and app 
+context. It is used to share data that is valid for one request only between 
+different functions. `url_for()` function is also available in base layout to 
+generate URLs (avoiding hardcoded adresses). Before loading the page content 
+the template loops over messages returned by `get_flashed_messages()` and uses 
+`flash()` to display them.
+There are 3 blocks defined in this template that will be overridden:
+1. `{% block tite %}` will change the title in browser's tab
+2. `{% block header %}` similar to title but changing title displayed on page
+3. `{% block content %}` will show content of each page, like login form or 
+   blog post
