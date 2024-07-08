@@ -160,7 +160,18 @@ generate URLs (avoiding hardcoded adresses). Before loading the page content
 the template loops over messages returned by `get_flashed_messages()` and uses 
 `flash()` to display them.
 There are 3 blocks defined in this template that will be overridden:
-1. `{% block tite %}` will change the title in browser's tab
+1. `{% block title %}` will change the title in browser's tab
 2. `{% block header %}` similar to title but changing title displayed on page
 3. `{% block content %}` will show content of each page, like login form or 
    blog post
+### Register
+The start of this template the intial line: `{% extends 'base.html' %}` tells 
+that this template should replace the blocks from the base template. By 
+putting `{% block title %}` inside `{% block header %}` will set the title 
+block and output the value of it into header block - this way both the window 
+adn page share the same title without writing it twice. The `input` tags are 
+using `required` attribute - this tells the browser not to submit form until 
+those fields are filled in. Regardless of browser handling the attribute or if 
+the request is made by something else Flask view will still validate the data. 
+It's important to always fully validate the data on the server, even if the 
+client does some validation as well.
