@@ -17,9 +17,8 @@ def get_db():
         )
         g.db.row_factory = sqlite3.Row
 
-        return g.db
+    return g.db
 
-    return None
 
 def close_db(e=None):
     '''
