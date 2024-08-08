@@ -177,3 +177,10 @@ It's important to always fully validate the data on the server, even if the
 client does some validation as well.
 The only difference between 'login' and 'register' tempaltes is the value on 
 submit button (`Register` and `Log In`).
+
+## Static Files
+To improve the general view of the web page views can be done with CSS file.
+Since this kind of file will not change in the future it can be stored as a
+static file and not a template. In Flask there is already a reserved `static`
+view that takes a path relative to the `flaskr/static`. Inside the `base.html`
+there is a link to `style.css` file.
