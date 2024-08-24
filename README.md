@@ -192,3 +192,17 @@ Since this kind of file will not change in the future it can be stored as a
 static file and not a template. In Flask there is already a reserved `static`
 view that takes a path relative to the `flaskr/static`. Inside the `base.html`
 there is a link to `style.css` file.
+
+## Blog Blueprint
+This section will explain the blueprints that are used for writing the blog 
+posts. The blueprint file should be created in main `flaskr` directory.
+After creation of this file it should be imported and registered from the 
+factory.
+For the blog blueprint there will be no url prefix so the `index` view will be 
+at `/`. For other sections like `create` and `update` they will have a 
+dedicated view at `/create`, `/update` and so on.
+For the `index` view the endpoint will be defined as `blog.index`. The 
+`app.add_url_rule()` will associate the endpoint name `index` with the `/` 
+url so that both `url_for('index')` or `url_for('blog.index')` will work 
+generating the same `/` URL either way.
+### Blog - Index
