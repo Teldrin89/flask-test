@@ -51,6 +51,14 @@ should be treated as package. Inside it holds:
 - and creates a simple route - `@app.route` connecting URL `/hello` with 
   function that returns response
 
+## Run the application
+With the initial application setup it is already possible to test and run it.
+From the terminal running flask command with below parameters will start the
+app in debug mode (remember to be in the top level directory):
+`$ flask -app flaskr run --debug`
+The application should be avilable through localhost at default port (5000):
+`http://127.0.0.1:5000/auth/login`
+
 ## Database connection
 With this tutorial application the database used will be SQLite and this will
 be accessed by `sqlite3` Python module. To start working with database the 1st
