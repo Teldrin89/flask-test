@@ -206,3 +206,10 @@ For the `index` view the endpoint will be defined as `blog.index`. The
 url so that both `url_for('index')` or `url_for('blog.index')` will work 
 generating the same `/` URL either way.
 ### Blog - Index
+The index page will show all of the blog posts starting from most recent one.
+For a logged user the `header` block adds link to the `create` view. When a 
+logged user will see the post that they are the author there will also be 
+an "Edit" link to the `update` view for that post. This page will be built 
+with Jinja and will utilize some of it's control structures like `loop.last` 
+to display line after each post except the last one.
+### Blog - Create
