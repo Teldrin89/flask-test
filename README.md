@@ -213,3 +213,8 @@ an "Edit" link to the `update` view for that post. This page will be built
 with Jinja and will utilize some of it's control structures like `loop.last` 
 to display line after each post except the last one.
 ### Blog - Create
+The create page will work in similar way to the `register` view. The 
+`login_required` decorator is used for post creation - a user must be logged
+in, otherwise there is a redirect to login page. If the user is logged the
+form is displayed, where user can fill out the required information - data is
+validated and post is added to the database of an error is shown
