@@ -218,3 +218,7 @@ The create page will work in similar way to the `register` view. The
 in, otherwise there is a redirect to login page. If the user is logged the
 form is displayed, where user can fill out the required information - data is
 validated and post is added to the database of an error is shown
+### Blog - Update
+For both blueprints - update and delete - in order to work on specific post it
+has to fetch a post id. For that reason a separate function has been created 
+that can be then used for both views. 
